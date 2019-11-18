@@ -33,7 +33,74 @@ fs.readdir("./commands/", (err, files) =>{
     if(jsfile.length <= 0){
         return console.log("No Commands found") //if there are no commands say 'No commands found'
     }
-    jsfile.forEach((f, i) =>{
+//repeat fs.readdir for command group folders
+jsfile.forEach((f, i) =>{
+        let pull = require(`./commands/${f}`);
+        client.commands.set(pull.config.name, pull); //Gets the name from the command config
+        pull.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull.config.name)
+        });
+
+client.enabled.set(pull.config.enabled, pull);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+
+jsfile1.forEach((f, i) =>{
+        let pull = require(`./commands/admim/${f}`);
+        client.commands.set(pull.config.name, pull); //Gets the name from the command config
+        pull.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull.config.name)
+        });
+
+client.enabled.set(pull.config.enabled, pull);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+
+jsfile2.forEach((f, i) =>{
+        let pull = require(`./commands/eco/${f}`);
+        client.commands.set(pull.config.name, pull); //Gets the name from the command config
+        pull.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull.config.name)
+        });
+
+client.enabled.set(pull.config.enabled, pull);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+
+jsfile3.forEach((f, i) =>{
+        let pull = require(`./commands/fun/${f}`);
+        client.commands.set(pull.config.name, pull); //Gets the name from the command config
+        pull.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull.config.name)
+        });
+
+client.enabled.set(pull.config.enabled, pull);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+
+jsfile4.forEach((f, i) =>{
+        let pull = require(`./commands/gen/${f}`);
+        client.commands.set(pull.config.name, pull); //Gets the name from the command config
+        pull.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull.config.name)
+        });
+
+client.enabled.set(pull.config.enabled, pull);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+
+jsfile5.forEach((f, i) =>{
+        let pull = require(`./commands/music/${f}`);
+        client.commands.set(pull.config.name, pull); //Gets the name from the command config
+        pull.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull.config.name)
+        });
+
+client.enabled.set(pull.config.enabled, pull);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+
+    jsfile2.forEach((f, i) =>{
         let pull = require(`./commands/${f}`);
         client.commands.set(pull.config.name, pull); //Gets the name from the command config
         pull.config.aliases.forEach(alias =>{
