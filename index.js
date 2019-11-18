@@ -58,7 +58,7 @@ y.addListener("data", res =>{
 var con = mysql.createConnection({
     host: "localhost",
     user: "Electric",
-    password: "ILoveKatV2",
+    password: "Password",
     database: "overlord",
     port: "3306"
 });
@@ -67,7 +67,7 @@ var con = mysql.createConnection({
 const data = mysql.createConnection({
     host: "localhost",
     user: "Bot",
-    password: "IloveKatV2",
+    password: "password",
     database: "electricbeaver",
     debug: false
     
