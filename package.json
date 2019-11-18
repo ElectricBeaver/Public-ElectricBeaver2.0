@@ -1,7 +1,7 @@
 {
-  "name": "overloard",
-  "version": "1.2.0",
-  "description": "The bot that sees all",
+  "name": "ElectricBeaver2.0",
+  "version": "2.0.0",
+  "description": "A discord bot",
   "main": "index.js",
   "dependencies": {
     "ascii": "^1.0.0",
@@ -31,15 +31,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cr4zyr003ter/OverLord.git"
+    "url": "git+ https://github.com/cr4zyr003ter/Public-ElectricBeaver2.0"
   },
   "keywords": [
-    "overlord"
+    "ElectricBeaver2.0"
   ],
   "author": "Brenden C. Mitchell",
-  "license": "ISC",
+  "license": "GNUv3",
   "bugs": {
-    "url": "https://github.com/cr4zyr003ter/OverLord/issues"
+    "url": "https://github.com/cr4zyr003ter/Public-ElectricBeaver2.0/issues"
   },
-  "homepage": "https://github.com/cr4zyr003ter/OverLord#readme"
+  "homepage": "https://discord.gg/pepQ3uP"
 }
