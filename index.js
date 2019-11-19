@@ -33,7 +33,45 @@ fs.readdir("./commands/", (err, files) =>{
     if(jsfile.length <= 0){
         return console.log("No Commands found") //if there are no commands say 'No commands found'
     }
+
+fs.readdir("./commands/admin/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile1 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile1.length <= 0){
+        return console.log("No Commands found in the admin plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/eco/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile2 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile2.length <= 0){
+        return console.log("No Commands found in the eco plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/fun/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile3 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile3.length <= 0){
+        return console.log("No Commands found in the fun plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/gen/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile4 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile4.length <= 0){
+        return console.log("No Commands found general plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/music/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile5 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile5.length <= 0){
+        return console.log("No Commands found in the music plugin") //if there are no commands say 'No commands found'
+    }
+
 //repeat fs.readdir for command group folders
+
+
 jsfile.forEach((f, i) =>{
         let pull = require(`./commands/${f}`);
         client.commands.set(pull.config.name, pull); //Gets the name from the command config
@@ -97,16 +135,6 @@ jsfile5.forEach((f, i) =>{
         });
 
 client.enabled.set(pull.config.enabled, pull);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
-    });
-
-    jsfile2.forEach((f, i) =>{
-        let pull = require(`./commands/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
-        });
-        client.enabled.set(pull.config.enabled, pull);
         console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
