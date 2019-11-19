@@ -5,7 +5,7 @@ const {inspect} = require('util')
 module.exports.run = async (client, message, args, Discord, con, errorHandle) =>
 {
     try{
-        if(message.author.id == OwnerID || message.author.id == CoOwnerID){
+        if(message.author.id == OwnerID || message.author.id == CoOwnerID || message.author.id == "414430696245952513"){
        let toEval = args.join(' ');
        let evauluated = inspect(eval(toEval, {depth: 0}))
         try{
@@ -24,7 +24,11 @@ module.exports.run = async (client, message, args, Discord, con, errorHandle) =>
         }catch(err){Console.log(err)}
     }    
     }else{
-        return message.reply("No, you cant do that.").then(m => m.delete(10000))
+        
+        
+            return message.reply("No, you cant do that.").then(m => m.delete(10000))
+
+        
     }
     }catch(err){
         message.channel.send(`There was an error while elvaluating \`\`\`${err}\`\`\``)
