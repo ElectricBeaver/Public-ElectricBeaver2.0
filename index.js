@@ -25,6 +25,11 @@ require('./SqlTest.js')
 global.servers = {};
 client.aliases = new Discord.Collection(); //collection of command aliases
 client.commands = new Discord.Collection(); // collection of command names
+client.commands1 = new Discord.Collection();
+client.commands2 = new Discord.Collection();
+client.commands3 = new Discord.Collection();
+client.commands4 = new Discord.Collection();
+client.commands5 = new Discord.Collection();
 client.enabled = new Discord.Collection(); //collection of enebled commands
     //#endregion
 fs.readdir("./commands/", (err, files) =>{
@@ -52,7 +57,7 @@ fs.readdir("./commands/admin/", (err, files) =>{
     }
     jsfile1.forEach((f, i) =>{
         let pull1 = require(`./commands/admim/${f}`);
-        client.commands.set(pull1.config.name, pull1); //Gets the name from the command config
+        client.commands1.set(pull1.config.name, pull1); //Gets the name from the command config
         pull1.config.aliases.forEach(alias =>{
             client.aliases.set(alias, pull1.config.name)
         });
@@ -69,7 +74,7 @@ fs.readdir("./commands/eco/", (err, files) =>{
     } 
     jsfile2.forEach((f, i) =>{
         let pull2 = require(`./commands/eco/${f}`);
-        client.commands.set(pull2.config.name, pull2); //Gets the name from the command config
+        client.commands2.set(pull2.config.name, pull2); //Gets the name from the command config
         pull2.config.aliases.forEach(alias =>{
         client.aliases.set(alias, pull2.config.name)
         });
@@ -86,7 +91,7 @@ fs.readdir("./commands/fun/", (err, files) =>{
     }
     jsfile3.forEach((f, i) =>{
         let pull3 = require(`./commands/fun/${f}`);
-        client.commands.set(pull3.config.name, pull3); //Gets the name from the command config
+        client.commands3.set(pull3.config.name, pull3); //Gets the name from the command config
         pull3.config.aliases.forEach(alias =>{
         client.aliases.set(alias, pull3.config.name)
         });
@@ -103,7 +108,7 @@ fs.readdir("./commands/gen/", (err, files) =>{
     }
     jsfile4.forEach((f, i) =>{
         let pull4 = require(`./commands/gen/${f}`);
-        client.commands.set(pull4.config.name, pull4); //Gets the name from the command config
+        client.commands4.set(pull4.config.name, pull4); //Gets the name from the command config
         pull4.config.aliases.forEach(alias =>{
         client.aliases.set(alias, pull4.config.name)
         });
@@ -120,7 +125,7 @@ fs.readdir("./commands/music/", (err, files) =>{
     }
     jsfile5.forEach((f, i) =>{
         let pull5 = require(`./commands/music/${f}`);
-        client.commands.set(pull5.config.name, pull5); //Gets the name from the command config
+        client.commands5.set(pull5.config.name, pull5); //Gets the name from the command config
         pull5.config.aliases.forEach(alias =>{
         client.aliases.set(alias, pull5.config.name)
         });
@@ -154,7 +159,7 @@ y.addListener("data", res =>{
 var con = mysql.createConnection({
     host: "localhost",
     user: "Electric",
-    password: "Password",
+    password: config.setup.sqlpass,
     database: "overlord",
     port: "3306"
 });
@@ -163,7 +168,7 @@ var con = mysql.createConnection({
 const data = mysql.createConnection({
     host: "localhost",
     user: "Bot",
-    password: "password",
+    password: config.setup.sqlpass,
     database: "electricbeaver",
     debug: false
     
@@ -241,7 +246,7 @@ function errorHandle(err){
 const footerMessage = config.setup.footer
     //#region Command Push
     if(!message.content.startsWith(config.setup.prefix) || message.content.startsWith(config.setup.other)) return;
-    let commandFile = client.commands.get(cmd.slice(config.setup.prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    let commandFile = client.commands.get(cmd.slice(config.setup.prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands1.get(cmd.slice(config.setup.prefix.length)) || client.commands1.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands2.get(cmd.slice(config.setup.prefix.length)) || client.commands2.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands3.get(cmd.slice(config.setup.prefix.length)) || client.commands3.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands4.get(cmd.slice(config.setup.prefix.length)) || client.commands4.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands5.get(cmd.slice(config.setup.prefix.length)) || client.commands5.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
     if(commandFile) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
   })
 client.login(config.setup.token)
