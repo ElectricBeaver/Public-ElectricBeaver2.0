@@ -33,7 +33,45 @@ fs.readdir("./commands/", (err, files) =>{
     if(jsfile.length <= 0){
         return console.log("No Commands found") //if there are no commands say 'No commands found'
     }
+
+fs.readdir("./commands/admin/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile1 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile1.length <= 0){
+        return console.log("No Commands found in the admin plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/eco/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile2 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile2.length <= 0){
+        return console.log("No Commands found in the eco plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/fun/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile3 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile3.length <= 0){
+        return console.log("No Commands found in the fun plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/gen/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile4 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile4.length <= 0){
+        return console.log("No Commands found general plugin") //if there are no commands say 'No commands found'
+    }
+
+fs.readdir("./commands/music/", (err, files) =>{
+    if(err) console.log(err)
+    let jsfile5 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
+    if(jsfile5.length <= 0){
+        return console.log("No Commands found in the music plugin") //if there are no commands say 'No commands found'
+    }
+
 //repeat fs.readdir for command group folders
+
+
 jsfile.forEach((f, i) =>{
         let pull = require(`./commands/${f}`);
         client.commands.set(pull.config.name, pull); //Gets the name from the command config
@@ -46,67 +84,57 @@ client.enabled.set(pull.config.enabled, pull);
     });
 
 jsfile1.forEach((f, i) =>{
-        let pull = require(`./commands/admim/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
+        let pull1 = require(`./commands/admim/${f}`);
+        client.commands.set(pull1.config.name, pull1); //Gets the name from the command config
+        pull1.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull1.config.name)
         });
 
-client.enabled.set(pull.config.enabled, pull);
+client.enabled.set(pull1.config.enabled, pull1);
         console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 
 jsfile2.forEach((f, i) =>{
-        let pull = require(`./commands/eco/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
+        let pull2 = require(`./commands/eco/${f}`);
+        client.commands.set(pull2.config.name, pull2); //Gets the name from the command config
+        pull2.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull2.config.name)
         });
 
-client.enabled.set(pull.config.enabled, pull);
+client.enabled.set(pull2.config.enabled, pull2);
         console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 
 jsfile3.forEach((f, i) =>{
-        let pull = require(`./commands/fun/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
+        let pull3 = require(`./commands/fun/${f}`);
+        client.commands.set(pull3.config.name, pull3); //Gets the name from the command config
+        pull3.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull3.config.name)
         });
 
-client.enabled.set(pull.config.enabled, pull);
+client.enabled.set(pull3.config.enabled, pull3);
         console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 
 jsfile4.forEach((f, i) =>{
-        let pull = require(`./commands/gen/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
+        let pull4 = require(`./commands/gen/${f}`);
+        client.commands.set(pull4.config.name, pull4); //Gets the name from the command config
+        pull4.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull4.config.name)
         });
 
-client.enabled.set(pull.config.enabled, pull);
+client.enabled.set(pull4.config.enabled, pull4);
         console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 
 jsfile5.forEach((f, i) =>{
-        let pull = require(`./commands/music/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
+        let pull5 = require(`./commands/music/${f}`);
+        client.commands.set(pull5.config.name, pull5); //Gets the name from the command config
+        pull5.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull5.config.name)
         });
 
-client.enabled.set(pull.config.enabled, pull);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
-    });
-
-    jsfile2.forEach((f, i) =>{
-        let pull = require(`./commands/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
-        });
-        client.enabled.set(pull.config.enabled, pull);
+client.enabled.set(pull5.config.enabled, pull5);
         console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
