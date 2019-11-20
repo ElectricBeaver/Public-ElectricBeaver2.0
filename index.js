@@ -25,6 +25,11 @@ require('./SqlTest.js')
 global.servers = {};
 client.aliases = new Discord.Collection(); //collection of command aliases
 client.commands = new Discord.Collection(); // collection of command names
+client.commands1 = new Discord.Collection();
+client.commands2 = new Discord.Collection();
+client.commands3 = new Discord.Collection();
+client.commands4 = new Discord.Collection();
+client.commands5 = new Discord.Collection();
 client.enabled = new Discord.Collection(); //collection of enebled commands
     //#endregion
 fs.readdir("./commands/", (err, files) =>{
@@ -33,6 +38,16 @@ fs.readdir("./commands/", (err, files) =>{
     if(jsfile.length <= 0){
         return console.log("No Commands found") //if there are no commands say 'No commands found'
     }
+    jsfile.forEach((f, i) =>{
+        let pull = require(`./commands/${f}`);
+        client.commands.set(pull.config.name, pull); //Gets the name from the command config
+        pull.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull.config.name)
+        });
+        client.enabled.set(pull.config.enabled, pull);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+});
 
 fs.readdir("./commands/admin/", (err, files) =>{
     if(err) console.log(err)
@@ -40,13 +55,33 @@ fs.readdir("./commands/admin/", (err, files) =>{
     if(jsfile1.length <= 0){
         return console.log("No Commands found in the admin plugin") //if there are no commands say 'No commands found'
     }
+    jsfile1.forEach((f, i) =>{
+        let pull1 = require(`./commands/admim/${f}`);
+        client.commands1.set(pull1.config.name, pull1); //Gets the name from the command config
+        pull1.config.aliases.forEach(alias =>{
+            client.aliases.set(alias, pull1.config.name)
+        });
+        client.enabled.set(pull1.config.enabled, pull1);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+});
 
 fs.readdir("./commands/eco/", (err, files) =>{
     if(err) console.log(err)
     let jsfile2 = files.filter(f => f.split(".").pop() === "js") //gets ride of '.js'
     if(jsfile2.length <= 0){
         return console.log("No Commands found in the eco plugin") //if there are no commands say 'No commands found'
-    }
+    } 
+    jsfile2.forEach((f, i) =>{
+        let pull2 = require(`./commands/eco/${f}`);
+        client.commands2.set(pull2.config.name, pull2); //Gets the name from the command config
+        pull2.config.aliases.forEach(alias =>{
+        client.aliases.set(alias, pull2.config.name)
+        });
+        client.enabled.set(pull2.config.enabled, pull2);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+});
 
 fs.readdir("./commands/fun/", (err, files) =>{
     if(err) console.log(err)
@@ -54,6 +89,16 @@ fs.readdir("./commands/fun/", (err, files) =>{
     if(jsfile3.length <= 0){
         return console.log("No Commands found in the fun plugin") //if there are no commands say 'No commands found'
     }
+    jsfile3.forEach((f, i) =>{
+        let pull3 = require(`./commands/fun/${f}`);
+        client.commands3.set(pull3.config.name, pull3); //Gets the name from the command config
+        pull3.config.aliases.forEach(alias =>{
+        client.aliases.set(alias, pull3.config.name)
+        });
+        client.enabled.set(pull3.config.enabled, pull3);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+});
 
 fs.readdir("./commands/gen/", (err, files) =>{
     if(err) console.log(err)
@@ -61,6 +106,16 @@ fs.readdir("./commands/gen/", (err, files) =>{
     if(jsfile4.length <= 0){
         return console.log("No Commands found general plugin") //if there are no commands say 'No commands found'
     }
+    jsfile4.forEach((f, i) =>{
+        let pull4 = require(`./commands/gen/${f}`);
+        client.commands4.set(pull4.config.name, pull4); //Gets the name from the command config
+        pull4.config.aliases.forEach(alias =>{
+        client.aliases.set(alias, pull4.config.name)
+        });
+        client.enabled.set(pull4.config.enabled, pull4);
+        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+    });
+});
 
 fs.readdir("./commands/music/", (err, files) =>{
     if(err) console.log(err)
@@ -68,76 +123,27 @@ fs.readdir("./commands/music/", (err, files) =>{
     if(jsfile5.length <= 0){
         return console.log("No Commands found in the music plugin") //if there are no commands say 'No commands found'
     }
-
-//repeat fs.readdir for command group folders
-
-
-jsfile.forEach((f, i) =>{
-        let pull = require(`./commands/${f}`);
-        client.commands.set(pull.config.name, pull); //Gets the name from the command config
-        pull.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull.config.name)
-        });
-
-client.enabled.set(pull.config.enabled, pull);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
-    });
-
-jsfile1.forEach((f, i) =>{
-        let pull1 = require(`./commands/admim/${f}`);
-        client.commands.set(pull1.config.name, pull1); //Gets the name from the command config
-        pull1.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull1.config.name)
-        });
-
-client.enabled.set(pull1.config.enabled, pull1);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
-    });
-
-jsfile2.forEach((f, i) =>{
-        let pull2 = require(`./commands/eco/${f}`);
-        client.commands.set(pull2.config.name, pull2); //Gets the name from the command config
-        pull2.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull2.config.name)
-        });
-
-client.enabled.set(pull2.config.enabled, pull2);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
-    });
-
-jsfile3.forEach((f, i) =>{
-        let pull3 = require(`./commands/fun/${f}`);
-        client.commands.set(pull3.config.name, pull3); //Gets the name from the command config
-        pull3.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull3.config.name)
-        });
-
-client.enabled.set(pull3.config.enabled, pull3);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
-    });
-
-jsfile4.forEach((f, i) =>{
-        let pull4 = require(`./commands/gen/${f}`);
-        client.commands.set(pull4.config.name, pull4); //Gets the name from the command config
-        pull4.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull4.config.name)
-        });
-
-client.enabled.set(pull4.config.enabled, pull4);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
-    });
-
-jsfile5.forEach((f, i) =>{
+    jsfile5.forEach((f, i) =>{
         let pull5 = require(`./commands/music/${f}`);
-        client.commands.set(pull5.config.name, pull5); //Gets the name from the command config
+        client.commands5.set(pull5.config.name, pull5); //Gets the name from the command config
         pull5.config.aliases.forEach(alias =>{
-            client.aliases.set(alias, pull5.config.name)
+        client.aliases.set(alias, pull5.config.name)
         });
-
-client.enabled.set(pull5.config.enabled, pull5);
+        client.enabled.set(pull5.config.enabled, pull5);
         console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
+//repeat fs.readdir for command group folders
+
+
+
+
+
+
+
+
+
+
 //#endregion
 
 //#region Console Chat
@@ -153,7 +159,7 @@ y.addListener("data", res =>{
 var con = mysql.createConnection({
     host: "localhost",
     user: "Electric",
-    password: "Password",
+    password: config.setup.sqlpass,
     database: "overlord",
     port: "3306"
 });
@@ -162,7 +168,7 @@ var con = mysql.createConnection({
 const data = mysql.createConnection({
     host: "localhost",
     user: "Bot",
-    password: "password",
+    password: config.setup.sqlpass,
     database: "electricbeaver",
     debug: false
     
@@ -240,7 +246,25 @@ function errorHandle(err){
 const footerMessage = config.setup.footer
     //#region Command Push
     if(!message.content.startsWith(config.setup.prefix) || message.content.startsWith(config.setup.other)) return;
-    let commandFile = client.commands.get(cmd.slice(config.setup.prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    let commandFile = client.commands.get(cmd.slice(config.setup.prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))  
     if(commandFile) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    
+    let commandFile1 = client.commands1.get(cmd.slice(config.setup.prefix.length)) || client.commands1.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile1) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    
+    let commandFile2 =  client.commands2.get(cmd.slice(config.setup.prefix.length)) || client.commands2.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile2) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+   
+    let commandFile3 = client.commands3.get(cmd.slice(config.setup.prefix.length)) || client.commands3.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile3) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+
+    let commandFile4 =  client.commands4.get(cmd.slice(config.setup.prefix.length)) || client.commands4.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) 
+    if(commandFile4) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+
+    let commandFile5 = client.commands5.get(cmd.slice(config.setup.prefix.length)) || client.commands5.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile5) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+
+
+
   })
 client.login(config.setup.token)
