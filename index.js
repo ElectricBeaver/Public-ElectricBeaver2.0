@@ -246,7 +246,25 @@ function errorHandle(err){
 const footerMessage = config.setup.footer
     //#region Command Push
     if(!message.content.startsWith(config.setup.prefix) || message.content.startsWith(config.setup.other)) return;
-    let commandFile = client.commands.get(cmd.slice(config.setup.prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands1.get(cmd.slice(config.setup.prefix.length)) || client.commands1.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands2.get(cmd.slice(config.setup.prefix.length)) || client.commands2.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands3.get(cmd.slice(config.setup.prefix.length)) || client.commands3.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands4.get(cmd.slice(config.setup.prefix.length)) || client.commands4.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) || client.commands5.get(cmd.slice(config.setup.prefix.length)) || client.commands5.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    let commandFile = client.commands.get(cmd.slice(config.setup.prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))  
     if(commandFile) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    
+    let commandFile1 = client.commands1.get(cmd.slice(config.setup.prefix.length)) || client.commands1.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile1) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    
+    let commandFile2 =  client.commands2.get(cmd.slice(config.setup.prefix.length)) || client.commands2.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile2) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+   
+    let commandFile3 = client.commands3.get(cmd.slice(config.setup.prefix.length)) || client.commands3.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile3) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+
+    let commandFile4 =  client.commands4.get(cmd.slice(config.setup.prefix.length)) || client.commands4.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) 
+    if(commandFile4) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+
+    let commandFile5 = client.commands5.get(cmd.slice(config.setup.prefix.length)) || client.commands5.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
+    if(commandFile5) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+
+
+
   })
 client.login(config.setup.token)
