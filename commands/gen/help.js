@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const moment = require('moment');
-const {prefix, token} = require('../config.json')
+const {prefix, token} = require('../../config.json')
 module.exports.run = async (client, message, args, Discord, con, errorHandle) =>
 {
     try{
