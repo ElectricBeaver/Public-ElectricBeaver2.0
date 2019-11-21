@@ -56,7 +56,7 @@ fs.readdir("./commands/admin/", (err, files) =>{
         return console.log("No Commands found in the admin plugin") //if there are no commands say 'No commands found'
     }
     jsfile1.forEach((f, i) =>{
-        let pull1 = require(`./commands/admim/${f}`);
+        let pull1 = require(`./commands/admin/${f}`);
         client.commands1.set(pull1.config.name, pull1); //Gets the name from the command config
         pull1.config.aliases.forEach(alias =>{
             client.aliases.set(alias, pull1.config.name)
@@ -250,19 +250,19 @@ const footerMessage = config.setup.footer
     if(commandFile) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
     
     let commandFile1 = client.commands1.get(cmd.slice(config.setup.prefix.length)) || client.commands1.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
-    if(commandFile1) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    if(commandFile1) commandFile1.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
     
     let commandFile2 =  client.commands2.get(cmd.slice(config.setup.prefix.length)) || client.commands2.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
-    if(commandFile2) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    if(commandFile2) commandFile2.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
    
     let commandFile3 = client.commands3.get(cmd.slice(config.setup.prefix.length)) || client.commands3.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
-    if(commandFile3) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    if(commandFile3) commandFile3.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
 
     let commandFile4 =  client.commands4.get(cmd.slice(config.setup.prefix.length)) || client.commands4.get(client.aliases.get(cmd.slice(config.setup.prefix.length))) 
-    if(commandFile4) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    if(commandFile4) commandFile4.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
 
     let commandFile5 = client.commands5.get(cmd.slice(config.setup.prefix.length)) || client.commands5.get(client.aliases.get(cmd.slice(config.setup.prefix.length)))
-    if(commandFile5) commandFile.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
+    if(commandFile5) commandFile5.run(client, message, args, Discord, con, data, errorHandle, footerMessage)
 
 
 
