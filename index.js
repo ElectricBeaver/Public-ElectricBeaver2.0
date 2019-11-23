@@ -62,7 +62,7 @@ fs.readdir("./commands/admin/", (err, files) =>{
             client.aliases.set(alias, pull1.config.name)
         });
         client.enabled.set(pull1.config.enabled, pull1);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+        console.log(`${colors.gray('[Admin]')} ${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
 
@@ -79,7 +79,7 @@ fs.readdir("./commands/eco/", (err, files) =>{
         client.aliases.set(alias, pull2.config.name)
         });
         client.enabled.set(pull2.config.enabled, pull2);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+        console.log(`${colors.gray('[Eco]')} ${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
 
@@ -96,7 +96,7 @@ fs.readdir("./commands/fun/", (err, files) =>{
         client.aliases.set(alias, pull3.config.name)
         });
         client.enabled.set(pull3.config.enabled, pull3);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+        console.log(`${colors.gray('[Fun]')} ${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
 
@@ -113,7 +113,7 @@ fs.readdir("./commands/gen/", (err, files) =>{
         client.aliases.set(alias, pull4.config.name)
         });
         client.enabled.set(pull4.config.enabled, pull4);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+        console.log(`${colors.gray('[Gen]')} ${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
 
@@ -130,7 +130,7 @@ fs.readdir("./commands/music/", (err, files) =>{
         client.aliases.set(alias, pull5.config.name)
         });
         client.enabled.set(pull5.config.enabled, pull5);
-        console.log(`${colors.green('[CMD-LOG]')} ${f} loaded`)
+        console.log(`${colors.gray('[Music]')} ${colors.green('[CMD-LOG]')} ${f} loaded`)
     });
 });
 //repeat fs.readdir for command group folders

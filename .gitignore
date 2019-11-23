@@ -7,3 +7,4 @@ commands\restart.js
 SqlTest.js
 logs\log.yaml
 logs\trumpetlogs.yaml
+logs/trumpetlogs.yaml
