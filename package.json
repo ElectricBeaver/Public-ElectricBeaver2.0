@@ -16,7 +16,7 @@
     "ffmpeg-binaries": "^4.0.0",
     "fs": "^0.0.1-security",
     "log4js": "^4.5.1",
-    "mathjs": "^6.2.5",
+    "mathjs": "^7.5.1",
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
     "opusscript": "^0.0.6",
