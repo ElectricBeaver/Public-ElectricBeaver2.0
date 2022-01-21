@@ -15,7 +15,7 @@
     "events": "^3.0.0",
     "ffmpeg-binaries": "^4.0.0",
     "fs": "^0.0.1-security",
-    "log4js": "^4.5.1",
+    "log4js": "^6.4.0",
     "mathjs": "^6.2.5",
     "moment": "^2.24.0",
     "mysql": "^2.17.1",
